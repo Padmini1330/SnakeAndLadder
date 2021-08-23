@@ -1,17 +1,17 @@
 package com.bridgelabz.snakeandladder;
-
 public class SnakeAndLadder 
 {
 
 	public static void main(String[] args) 
 	{
-		int position=0;
+		int position=0,numberOfDieThrows=0;
 		System.out.println("***WELCOME TO THE GAME OF SNAKES AND LADDERS***");
 		
 		while(position!=100) 
 		{
 			
 			int valueOfDie=(int)(Math.random()*6) +1;
+			numberOfDieThrows+=1;
 			System.out.println("The value of die is "+ valueOfDie);
 			int option=(int)(Math.random()*3) +1;
 			switch(option)
@@ -39,6 +39,8 @@ public class SnakeAndLadder
 			}
 
 		}
+		System.out.println("Number Of Times Die Rolled by Player :" + numberOfDieThrows);
+		System.out.println("position of Player : "+ position);
 
     }
 }
