@@ -8,7 +8,7 @@ public class SnakeAndLadder {
 	static int dieValueOfPlayerB=0;
 
 	
-	  public void PlayerATurn() {
+	  public void playerATurn() {
 				int valueOfDie=(int)(Math.random()*6) +1;
 				dieValueOfPlayerA+=1;
 				System.out.println("A : Die Shows:"+ valueOfDie);
@@ -25,7 +25,7 @@ public class SnakeAndLadder {
 							positionOfPlayerA-=valueOfDie;
 						}
 				        System.out.println("A : position:"+positionOfPlayerA);
-				        PlayerATurn();
+				        playerATurn();
 						break;
 				case 3: positionOfPlayerA-=valueOfDie;
 						if(positionOfPlayerA<0)
@@ -38,7 +38,7 @@ public class SnakeAndLadder {
 				}
 	  } 
 	  
-	  public void PlayerBTurn() {
+	  public void playerBTurn() {
 				int valueOfDie=(int)(Math.random()*6) +1;
 				dieValueOfPlayerB+=1;
 				System.out.println("B : Die Shows:"+ valueOfDie);
@@ -55,7 +55,7 @@ public class SnakeAndLadder {
 							positionOfPlayerB-=valueOfDie;
 						}
 						System.out.println("B : position:"+positionOfPlayerB);
-						PlayerBTurn();
+						playerBTurn();
 						break;
 				case 3: positionOfPlayerB-=valueOfDie;
 						if(positionOfPlayerB<0)
@@ -75,8 +75,8 @@ public class SnakeAndLadder {
 		System.out.println("***WELCOME TO THE GAME OF SNAKES AND LADDERS***");
 		while(!(positionOfPlayerA==100||positionOfPlayerB==100))
 		{
-			ob.PlayerATurn();
-			ob.PlayerBTurn();
+			ob.playerATurn();
+			ob.playerBTurn();
 		}
 		
 		System.out.println("Number Of Times Die Rolled by Player A:" + dieValueOfPlayerA);
