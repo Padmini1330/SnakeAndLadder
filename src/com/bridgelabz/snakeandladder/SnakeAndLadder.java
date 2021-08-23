@@ -1,46 +1,95 @@
 package com.bridgelabz.snakeandladder;
-public class SnakeAndLadder 
-{
 
-	public static void main(String[] args) 
-	{
-		int position=0,numberOfDieThrows=0;
-		System.out.println("***WELCOME TO THE GAME OF SNAKES AND LADDERS***");
-		
-		while(position!=100) 
-		{
-			
-			int valueOfDie=(int)(Math.random()*6) +1;
-			numberOfDieThrows+=1;
-			System.out.println("The value of die is "+ valueOfDie);
-			int option=(int)(Math.random()*3) +1;
-			switch(option)
-			{
-				case 1: System.out.println("position:"+position);
+
+public class SnakeAndLadder {
+	static int positionOfPlayerA=0;
+	static int positionOfPlayerB=0;
+	static int dieValueOfPlayerA=0;
+	static int dieValueOfPlayerB=0;
+
+	
+	  public void PlayerATurn() {
+				int valueOfDie=(int)(Math.random()*6) +1;
+				dieValueOfPlayerA+=1;
+				System.out.println("A : Die Shows:"+ valueOfDie);
+				int option=(int)(Math.random()*3) +1;
+				switch(option)
+				{
+				case 1: System.out.println("A : position:"+positionOfPlayerA);
 				        break;
-				case 2: position+=valueOfDie;
-						if(position>100)
-						{
-							position-=valueOfDie;
-						}
-				        System.out.println("position:"+position);
-						if(position==100)
+				case 2: positionOfPlayerA+=valueOfDie;
+						if(positionOfPlayerA==100)
 							break;
-						
-						break;
-				case 3: position-=valueOfDie;
-						if(position<0)
+						else if(positionOfPlayerA>100)
 						{
-							position=0;
+							positionOfPlayerA-=valueOfDie;
 						}
-						System.out.println("position:"+position);
+				        System.out.println("A : position:"+positionOfPlayerA);
+				        PlayerATurn();
+						break;
+				case 3: positionOfPlayerA-=valueOfDie;
+						if(positionOfPlayerA<0)
+						{
+							positionOfPlayerA=0;
+						}
+						System.out.println("A : position:"+positionOfPlayerA);
 						break;
 				default:break;
-			}
-
+				}
+	  } 
+	  
+	  public void PlayerBTurn() {
+				int valueOfDie=(int)(Math.random()*6) +1;
+				dieValueOfPlayerB+=1;
+				System.out.println("B : Die Shows:"+ valueOfDie);
+				int option=(int)(Math.random()*3) +1;
+				switch(option)
+				{
+				case 1: System.out.println("B : position:"+positionOfPlayerB);
+				        break;
+				case 2: positionOfPlayerB+=valueOfDie;
+						if(positionOfPlayerB==100)
+							break;
+						else if(positionOfPlayerB>100)
+						{
+							positionOfPlayerB-=valueOfDie;
+						}
+						System.out.println("B : position:"+positionOfPlayerB);
+						PlayerBTurn();
+						break;
+				case 3: positionOfPlayerB-=valueOfDie;
+						if(positionOfPlayerB<0)
+						{
+							positionOfPlayerB=0;
+						}
+						System.out.println("B : position:"+positionOfPlayerB);
+						break;
+				default:break;
+				}
+	  } 
+	 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SnakeAndLadder ob=new SnakeAndLadder();
+		
+		System.out.println("***WELCOME TO THE GAME OF SNAKES AND LADDERS***");
+		while(!(positionOfPlayerA==100||positionOfPlayerB==100))
+		{
+			ob.PlayerATurn();
+			ob.PlayerBTurn();
 		}
-		System.out.println("Number Of Times Die Rolled by Player :" + numberOfDieThrows);
-		System.out.println("position of Player : "+ position);
+		
+		System.out.println("Number Of Times Die Rolled by Player A:" + dieValueOfPlayerA);
+		System.out.println("Position of Player A: "+ positionOfPlayerA);
+		System.out.println("Number Of Times Die Rolled by Player B:" + dieValueOfPlayerB);
+		System.out.println("Position of Player B: "+ positionOfPlayerB);
+		if(positionOfPlayerA==100) {
+			System.out.println("Player A wins!! ");
+		}
+		else {
+			System.out.println("Player B wins!! ");
+		}
 
-    }
+	}
+
 }
